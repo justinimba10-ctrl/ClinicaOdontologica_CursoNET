@@ -17,7 +17,7 @@ namespace ClinicaOdontologica.Modelos
 
         [Column("costo_aplicado", TypeName = "numeric(10,2)")]
         [Required]
-        public int costoAplicado { get; set; }
+        public Decimal costoAplicado { get; set; }
 
         [Column("observaciones")]
         [Required]

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicaOdontologica.Modelos
 {
@@ -12,8 +8,8 @@ namespace ClinicaOdontologica.Modelos
     public class Factura
     {
         [Key]
-        [Column("id_factura", TypeName = "Serial")]
-        public int factura { get; set; }
+        [Column("id_factura")]
+        public int idFactura { get; set; } 
 
         [Column("fecha_emision", TypeName = "date")]
         [Required]
@@ -21,29 +17,25 @@ namespace ClinicaOdontologica.Modelos
 
         [Column("subtotal", TypeName = "numeric(10,2)")]
         [Required]
-        public int subtotal { get; set; }
+        public decimal subtotal { get; set; }
 
         [Column("impuestos", TypeName = "numeric(10,2)")]
         [Required]
-        public int impueesto { get; set; }
+        public decimal impuestos { get; set; }
 
         [Column("total", TypeName = "numeric(10,2)")]
         [Required]
-        public int total { get; set; }
+        public decimal total { get; set; }
 
         [Column("estado_pago")]
         [Required]
-        [MaxLength (20)]
-        public string estadoPago { get; set; }
+        [MaxLength(20)]
+        public string estadoPago { get; set; } = "Pendiente";
 
-        [ForeignKey("cita")]
         [Column("id_cita")]
-
         public int idCita { get; set; }
 
-
-        //OBEJTOS DE NAVEGACION
+        [ForeignKey(nameof(idCita))]
         public Cita? cita { get; set; }
-        
     }
 }

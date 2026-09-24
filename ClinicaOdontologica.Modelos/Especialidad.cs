@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace ClinicaOdontologica.Modelos
 {
     [Table("Especialidades")]
-
     public class Especialidad
     {
         [Key]
@@ -19,15 +18,13 @@ namespace ClinicaOdontologica.Modelos
         [Column("nombre_especialidad")]
         [MaxLength(50)]
         [Required]
-        public string nombreEspecialidad { get; set; }
+        public string nombreEspecialidad { get; set; } = string.Empty;
 
         [Column("descripcion")]
         [MaxLength(200)]
-        [Required]
-        public string descripcion { get; set; }
+        public string? descripcion { get; set; }
 
-        //realciones
-        List<Odontologo>? Odontologo { get; set; } = new List<Odontologo>();
-
+        // Relación: Se agrega 'public' para que EF pueda acceder a ella
+        public List<Odontologo>? Odontologos { get; set; } = new List<Odontologo>();
     }
 }
