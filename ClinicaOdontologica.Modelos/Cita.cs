@@ -30,17 +30,28 @@ namespace ClinicaOdontologica.Modelos
         public string estadoCita { get; set; }
 
         [ForeignKey("paciente")]
-        [Column("id_paciente", TypeName = "Integer")]
-        public Paciente? paciente { get; set; }
+        [Column("id_paciente")]
+        public int idPaciente { get; set; }
+        
 
         [ForeignKey("odontologo")]
-        [Column("id_odontologo", TypeName = "Integer")]
-        public Odontologo? odontologo { get; set; }
+        [Column("id_odontologo")]
+        public int idOdontologo { get; set; }
+        
 
         [ForeignKey("consultorio")]
-        [Column("id_consultorio", TypeName = "Integer")]
+        [Column("id_consultorio")]
+        public int idConsultorio { get; set; }
+        
+
+        //OBEJTOS DE NAVEGACION
+        public Paciente? paciente { get; set; }
+        public Odontologo? odontologo { get; set; }
         public Consultorio? consultorio { get; set; }
 
-       
+        //RELACIONES
+        List<DetalleCita>? DetallesCita { get; set; } = new List<DetalleCita>();
+        List<Recetas>? Recetas { get; set; } = new List<Recetas>();
+
     }
 }

@@ -26,5 +26,8 @@ namespace ClinicaOdontologica.Modelos
         [Required]
         public string descripcion { get; set; }
 
+        //realciones
+        List<Odontologo>? Odontologo { get; set; } = new List<Odontologo>();
+
     }
 }

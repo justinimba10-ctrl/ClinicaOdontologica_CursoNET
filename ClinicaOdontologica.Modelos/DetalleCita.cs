@@ -19,17 +19,23 @@ namespace ClinicaOdontologica.Modelos
         [Required]
         public int costoAplicado { get; set; }
 
-        [Column("observaciones", TypeName = "character varying")]
+        [Column("observaciones")]
         [Required]
         [MaxLength(200)]
         public string observacion { get; set; }
 
         [ForeignKey("cita")]
-        [Column("id_cita", TypeName = "Integer")]
+        [Column("id_cita")]
+        public int idCita { get; set; }
         public Cita? cita { get; set; }
 
         [ForeignKey("tratamiento")]
-        [Column("id_tratamiento", TypeName = "Integer")]
+        [Column("id_tratamiento")]
+        public int idTratamiento { get; set; }
+
+        //OBEJTOS DE NAVEGACION
         public Tratamiento? tratamiento { get; set; }
+
+        
     }
 }

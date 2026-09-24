@@ -15,7 +15,7 @@ namespace ClinicaOdontologica.Modelos
         [Column("id_receta", TypeName = "Serial")]
         public int idReceta { get; set; }
 
-        [Column("fecha_emision", TypeName = "timestamp whitout time zone")]
+        [Column("fecha_emision", TypeName = "date")]
         [Required]
         public DateTime fechaEmision { get; set; }
 
@@ -24,9 +24,14 @@ namespace ClinicaOdontologica.Modelos
         public string indicacion { get; set; }
 
         [ForeignKey("cita")]
-        [Column("id_cita", TypeName = "integer")]
+        [Column("id_cita")]
+        public int idCita { get; set; }
+
+
+        //OBEJTOS DE NAVEGACION
         public Cita? cita { get; set; }
 
+       
 
     }
 }

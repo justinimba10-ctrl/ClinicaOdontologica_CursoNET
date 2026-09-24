@@ -15,25 +15,31 @@ namespace ClinicaOdontologica.Modelos
         [Column("id_odontologo", TypeName = "Serial")]
         public int idOdontologo { get; set; }
 
-        [Column("nombres", TypeName = "character varying")]
+        [Column("nombres")]
         [MaxLength(50)]
         [Required]
         public string nombre { get; set; }
 
-        [Column("apellidos", TypeName = "character varying")]
+        [Column("apellidos")]
         [MaxLength(50)]
         [Required]
         public string apellido { get; set; }
 
-        [Column("registro_medico", TypeName = "character varying")]
+        [Column("registro_medico")]
         [MaxLength(20)]
         [Required]
         public string registroMedico { get; set; }
 
         [ForeignKey("especialidad")]
-        [Column("id_especialidad", TypeName = "Integer")]
+        [Column("id_especialidad")]
+        public int idEspecialidad { get; set; }
 
-        public Especialidad? especialidad {get;set;}
 
+        //OBJETOS DE NAVEGACION
+        public Especialidad? especialidad { get; set; }
+
+        //Relaciones
+
+        List<Cita>? citas { get; set; } = new List<Cita>();
     }
 }

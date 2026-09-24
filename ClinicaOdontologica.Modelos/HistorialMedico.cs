@@ -32,6 +32,9 @@ namespace ClinicaOdontologica.Modelos
         [ForeignKey("paciente")]
         [Column("id_paciente")]
         public int IdPaciente { get; set; }
+
+
+        //OBJETOS DE NAVEGACION
         public Paciente? paciente { get; set; }
     }
 }
