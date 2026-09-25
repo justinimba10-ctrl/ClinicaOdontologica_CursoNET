@@ -24,7 +24,7 @@ namespace ClinicaOdontologica.Modelos
         [Required]
         public decimal costoBase { get; set; }
 
-        [Column("duracion_Estimada_minutos", TypeName = "timestamp")]
+        [Column("duracion_Estimada_minutos")]
         [Required]
         public TimeOnly duracionEstimadaMinutos { get; set; }
 
