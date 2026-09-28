@@ -40,6 +40,6 @@ namespace ClinicaOdontologica.Modelos
 
         //Relaciones
 
-        List<Cita>? citas { get; set; } = new List<Cita>();
+        public  List<Cita>? citas { get; set; } = new List<Cita>();
     }
 }
