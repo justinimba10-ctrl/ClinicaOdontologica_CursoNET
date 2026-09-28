@@ -2,7 +2,7 @@
 using ClinicaOdontologica.Consumer;
 using ClinicaOdontologica.Modelos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Migrations;
+
 
 public class HistorialMedicosController : Controller
 {

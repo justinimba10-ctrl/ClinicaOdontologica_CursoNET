@@ -3,15 +3,19 @@ using ClinicaOdontologica.Modelos;
 using Microsoft.EntityFrameworkCore;
 
 
-
 CRUD<Cita>.Endpoint = "https://localhost:7202/api/Citas";
 CRUD<Consultorio>.Endpoint = "https://localhost:7202/api/Consultorios";
 CRUD<DetalleCita>.Endpoint = "https://localhost:7202/api/DetalleCitas";
 CRUD<Especialidad>.Endpoint = "https://localhost:7202/api/Especialidades";
 CRUD<Factura>.Endpoint = "https://localhost:7202/api/Facturas";
 CRUD<HistorialMedico>.Endpoint = "https://localhost:7202/api/HistorialesMedicos";
+CRUD<Odontologo>.Endpoint = "https://localhost:7202/api/Odontologos";
+CRUD<Paciente>.Endpoint = "https://localhost:7202/api/Pacientes";
+CRUD<Recetas>.Endpoint = "https://localhost:7202/api/Recetas";
+CRUD<Tratamiento>.Endpoint = "https://localhost:7202/api/Tratamientos";
 
 var builder = WebApplication.CreateBuilder(args);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
