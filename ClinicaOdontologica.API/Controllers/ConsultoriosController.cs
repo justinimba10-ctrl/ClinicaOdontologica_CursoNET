@@ -16,15 +16,31 @@ public class ConsultoriosController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Consultorio>>> GetConsultorio()
     {
-        return await _context.Consultorios.ToListAsync();
+        var consultorio = await _context.Consultorios.
+             Include(c => c.Citas).
+                ThenInclude(cita => cita.paciente).
+             Include(c => c.Citas).
+                ThenInclude(cita => cita.odontologo).
+                ThenInclude(oo => oo.especialidad).
+            Include(c => c.Citas).
+                ThenInclude(citas => citas.DetallesCita).
+             ToListAsync();
+        return consultorio;
     }
 
     // GET: api/Consultorio/5
     [HttpGet("{idconsultorio}")]
     public async Task<ActionResult<Consultorio>> GetConsultorio(int idconsultorio)
     {
-        var consultorio = await _context.Consultorios.FindAsync(idconsultorio);
-
+        var consultorio = await _context.Consultorios.
+            Include(c => c.Citas).
+                ThenInclude(cita => cita.paciente).
+             Include(c => c.Citas).
+                ThenInclude(cita => cita.odontologo).
+                ThenInclude(oo => oo.especialidad).
+            Include(c => c.Citas).
+                ThenInclude(citas => citas.DetallesCita).
+             FirstOrDefaultAsync(c => c.idConsultorio == idconsultorio);
         if (consultorio == null)
         {
             return NotFound();

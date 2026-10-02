@@ -13,10 +13,10 @@ public class RecetasController : Controller
     }
 
     // GET: RECETASS/Details/5
-    public ActionResult Details(int idreceta)
+    public ActionResult Details(int id)
     {
-        var recetas = CRUD<Recetas>.GetById(idreceta);
-        if (idreceta == null)
+        var recetas = CRUD<Recetas>.GetById(id);
+        if (id == null)
         {
             return NotFound();
         }
@@ -49,9 +49,9 @@ public class RecetasController : Controller
     }
 
     // GET: RECETASS/Edit/5
-    public ActionResult Edit(int idreceta)
+    public ActionResult Edit(int id)
     {
-        var recetas = CRUD<Recetas>.GetById(idreceta);
+        var recetas = CRUD<Recetas>.GetById(id);
         if (recetas == null)
         {
             return NotFound();
@@ -64,11 +64,11 @@ public class RecetasController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int idreceta, Recetas recetas)
+    public ActionResult Edit(int id, Recetas recetas)
     {
         try
         {
-            CRUD<Recetas>.Update(idreceta, recetas);
+            CRUD<Recetas>.Update(id, recetas);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -79,9 +79,9 @@ public class RecetasController : Controller
     }
 
     // GET: RECETASS/Delete/5
-    public ActionResult Delete(int idreceta)
+    public ActionResult Delete(int id)
     {
-        var receta = CRUD<Recetas>.GetById(idreceta);
+        var receta = CRUD<Recetas>.GetById(id);
         if (receta == null)
         {
             return NotFound();
@@ -92,11 +92,11 @@ public class RecetasController : Controller
     // POST: RECETASS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int idreceta,Recetas receta)
+    public ActionResult Delete(int id,Recetas receta)
     {
         try
         {
-            CRUD<Recetas>.Delete(idreceta);
+            CRUD<Recetas>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)

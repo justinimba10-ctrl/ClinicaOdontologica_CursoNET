@@ -19,15 +19,35 @@ namespace ClinicaOdontologica.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DetalleCita>>> GetDetalleCitas()
         {
-            // Nota: Si en tu DbContext la propiedad se llama DetallesCita, cámbialo aquí
-            return await _context.DetalleCitas.ToListAsync();
+            var detallecita = await _context.DetalleCitas.
+               Include(c => c.cita).
+                    ThenInclude(c => c.paciente).
+               Include(c => c.cita).
+                    ThenInclude(c => c.odontologo).
+                    ThenInclude(o => o.especialidad).
+                Include(c => c.cita).
+                    ThenInclude(c => c.consultorio).
+                ToListAsync();
+
+            return detallecita;
+
         }
 
         // GET: api/DetalleCitas/5
         [HttpGet("{id}")]
         public async Task<ActionResult<DetalleCita>> GetDetalleCita(int id)
         {
-            var detalle = await _context.DetalleCitas.FindAsync(id);
+            var detalle = await _context.DetalleCitas.
+                Include(d => d.cita).
+                    ThenInclude(d => d.paciente).
+               Include(d => d.cita).
+                    ThenInclude(d => d.odontologo).
+                    ThenInclude(o => o.especialidad).
+                Include(d => d.cita).
+                    ThenInclude(d => d.consultorio).
+                FirstOrDefaultAsync(d => d.detalleCita == id);
+
+                
 
             if (detalle == null)
             {

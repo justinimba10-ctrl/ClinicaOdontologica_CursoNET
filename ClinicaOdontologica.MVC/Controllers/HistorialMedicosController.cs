@@ -14,10 +14,10 @@ public class HistorialMedicosController : Controller
     }
 
     // GET: HISTORIALMEDICOS/Details/5
-    public ActionResult Details(int idhistorialmedico)
+    public ActionResult Details(int id)
     {
-        var historialmedico = CRUD<HistorialMedico>.GetById(idhistorialmedico);
-        if (idhistorialmedico == null)
+        var historialmedico = CRUD<HistorialMedico>.GetById(id);
+        if (id == null)
         {
             return NotFound();
         }
@@ -50,9 +50,9 @@ public class HistorialMedicosController : Controller
     }
 
     // GET: HISTORIALMEDICOS/Edit/5
-    public ActionResult Edit(int idhistorialmedico)
+    public ActionResult Edit(int id)
     {
-        var historialmedico = CRUD<HistorialMedico>.GetById(idhistorialmedico);
+        var historialmedico = CRUD<HistorialMedico>.GetById(id);
         if (historialmedico == null)
         {
             return NotFound();
@@ -65,11 +65,11 @@ public class HistorialMedicosController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int idhistorialmedico,HistorialMedico historialmedico)
+    public ActionResult Edit(int id,HistorialMedico historialmedico)
     {
         try
         {
-            CRUD<HistorialMedico>.Update(idhistorialmedico, historialmedico);
+            CRUD<HistorialMedico>.Update(id, historialmedico);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
@@ -80,9 +80,9 @@ public class HistorialMedicosController : Controller
     }
 
     // GET: HISTORIALMEDICOS/Delete/5
-    public ActionResult Delete(int idhistorialmedico)
+    public ActionResult Delete(int id)
     {
-        var historialmedico = CRUD<HistorialMedico>.GetById(idhistorialmedico);
+        var historialmedico = CRUD<HistorialMedico>.GetById(id);
         if (historialmedico == null)
         {
             return NotFound();
@@ -93,11 +93,11 @@ public class HistorialMedicosController : Controller
     // POST: HISTORIALMEDICOS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int idhistorialmedico, HistorialMedico historialmedico)
+    public ActionResult Delete(int id, HistorialMedico historialmedico)
     {
         try
         {
-            CRUD<HistorialMedico>.Delete(idhistorialmedico);
+            CRUD<HistorialMedico>.Delete(id);
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
